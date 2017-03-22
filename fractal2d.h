@@ -10,6 +10,8 @@ class fractal2d {
 
   fractal2d(point min, point max, size resolution);
 
+  virtual void generate() =0;
+
   int width() const { return m_resolution[0]; }
   int height() const { return m_resolution[1]; }
 
@@ -21,8 +23,6 @@ class fractal2d {
   bool operator() (int i, int j) const { return get_grid_point_in_set(i, j); }
 
  protected:
-  virtual void generate() =0;
-
   int index_of_grid_point(int i, int j) const;
   void add_grid_point_to_set(int i, int j);
   bool get_grid_point_in_set(int i, int j) const;

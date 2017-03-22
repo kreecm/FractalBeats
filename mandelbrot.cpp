@@ -2,10 +2,13 @@
 
 #include "mandelbrot.h"
 
+// Default domain is [-2.5, 0.5] x [-1, 1]. The resolution specifies the number
+// of grid points in the y-direction. The number of grid points in the
+// x-direction is 1.5 * resolution (since the domain has 3:2 aspect ratio.)
 mandelbrot::mandelbrot(int resolution, int max_iter)
-    : fractal2d(point(-2.0 - 1.0 / resolution, 1.0 + 1.0 / resolution),
-                point(1.0 / resolution, -2.0 - 1.0 / resolution),
-                size(2 * resolution + 3, 3 * resolution + 3)),
+    : fractal2d(point(-2.5, 1.0),
+                point(0.5, -1.0),
+                size(1.5 * resolution, resolution)),
       m_resolution(resolution),
       m_max_iter(max_iter)
 {}

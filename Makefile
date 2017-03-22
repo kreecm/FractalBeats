@@ -1,18 +1,23 @@
 EIGEN_DIR=/usr/include/eigen3
 INCLUDES = -I$(EIGEN_DIR)
-CCFLAGS = -g -std=c++11
+
+CCFLAGS = -g -std=c++11 $(INCLUDES)
+
 SRCS = 	fractal2d.cpp \
 	mandelbrot.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-all: libfractal.a
+all: fracgen
 
 .cpp.o:
-	$(CXX) $(INCLUDES) $(CCFLAGS) -c $< -o $@
+	$(CXX) $(CCFLAGS) -c $< -o $@
 
 libfractal.a: $(OBJS)
 	echo $(OBJS)
 	ar rcs $@ $(OBJS)
+
+fracgen: fracgen.cpp libfractal.a
+	$(CXX) $(CCFLAGS) -o $@ fracgen.cpp libfractal.a
 
 depend: dep
 

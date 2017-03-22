@@ -8,7 +8,6 @@ fractal2d::fractal2d(point min, point max, size resolution)
       m_dy((m_max[1] - m_min[1]) / m_resolution[1])
 {
   m_pointset.resize(width() * height());
-  this->generate();
 }
 
 void fractal2d::print(std::ostream& out) const {
