@@ -3,7 +3,6 @@
 
 #include <ostream>
 #include <Eigen/Eigen>
-
 #include "grid2d.h"
 
 class fractal2d {

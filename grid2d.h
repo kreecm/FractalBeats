@@ -29,12 +29,12 @@ class grid2d {
 
   T& at(const coord& node) {
     int index = linear_index(node);
-    m_data[index];
+    return m_data[index];
   }
 
   const T& at(const coord& node) const {
     int index = linear_index(node);
-    m_data[index];
+    return m_data[index];
   }
 
   template<typename U>

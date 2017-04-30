@@ -10,8 +10,8 @@ fractal2d::fractal2d(int width, int height, point min, point max) :
 
 void fractal2d::print(std::ostream& out) const {
   for (int j = 0; j < height(); j++) {
-    for( int i = 0; i < width(); i++) {
-      if(m_grid(i, j)) {
+    for ( int i = 0; i < width(); i++) {
+      if (m_grid(i, j)) {
         out << "*";
       }
       else {
