@@ -1,6 +1,6 @@
 #include "fractal2d.h"
 
-fractal2d::fractal2d(int width, int height, point min, point max) :
+fractal2d::fractal2d(point min, point max, int width, int height) :
     m_min(min),
     m_max(max),
     m_dx((m_max[0] - m_min[0]) / width),
