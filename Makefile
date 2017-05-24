@@ -1,6 +1,6 @@
 EIGEN_DIR=/usr/include/eigen3
 INCLUDES = -I$(EIGEN_DIR)
-LIBS = -lglut -lGLU -lGL -lXmu -lXext -lX11 -lm
+LIBS = -lglut -lGL -lGLU -lGLEW -lXmu -lXext -lX11 -lm
 
 CCFLAGS = -g -std=c++11 $(INCLUDES)
 

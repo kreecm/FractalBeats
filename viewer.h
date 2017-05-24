@@ -33,7 +33,7 @@ class viewer {
 
   viewer() : m_fractal(nullptr) {}
 
-  void init_texture();
+  void init();
 
   const fractal2d* m_fractal;
   int m_tex_id;
