@@ -1,9 +1,11 @@
 #include <iostream>
+#include <iomanip>
 #include <map>
 #include <memory>
 #include <string>
 
 #include "mandelbrot.h"
+#include "viewer.h"
 
 enum fractal_type {
   kMandelbrot
@@ -14,6 +16,7 @@ struct fracgen_params {
   int max_iter = 100;
   fractal_type fractal = kMandelbrot;
   bool print = false;
+  bool view = false;
 };
 
 const std::map<std::string, fractal_type> fractal_types = {
@@ -26,6 +29,7 @@ void usage() {
             << "  --resolution <int>  The resolution to generate.\n"
             << "  --maxiter <int>     The maximum iteration of the generator.\n"
             << "  --print             Print the result to stdout.\n"
+            << "  --view              Render the fractal in a viewer.\n"
             << "  --help              Print this help message.\n";
 }
 
@@ -46,6 +50,8 @@ void parse_params(int argc, char* argv[], fracgen_params* params) {
       params->max_iter = std::stoi(argv[++i]);
     } else if (arg == "--print" || arg == "-p") {
       params->print = true;
+    } else if (arg == "--view" || arg == "-v") {
+      params->view = true;
     } else if (arg == "--help" || arg == "-h") {
       usage();
       std::exit(0);
@@ -54,6 +60,8 @@ void parse_params(int argc, char* argv[], fracgen_params* params) {
 }
 
 int main(int argc, char* argv[]) {
+  viewer::create(&argc, argv);
+
   fracgen_params params;
   parse_params(argc, argv, &params);
 
@@ -67,6 +75,10 @@ int main(int argc, char* argv[]) {
   frac->generate();
   if (params.print) {
     frac->print(std::cout);
+  }
+  if (params.view) {
+    viewer::set_fractal(frac.get());
+    viewer::show();
   }
 
   return 0;

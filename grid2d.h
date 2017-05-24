@@ -24,6 +24,8 @@ class grid2d {
 
   int size() const { return width() * height(); }
 
+  const T* data() const { return m_data.get(); }
+
   T& operator[] (const coord& node) { return at(node); }
   const T& operator[] (const coord& node) const { return at(node); }
 
